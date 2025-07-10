@@ -31,21 +31,21 @@ jobs:
       - name: Testing the output for hello.sh
         run: |
           echo "1. Validating the output file creation: "
-          if [ -f ./output/${{ env.LOG_FILE }} ]; then
+          if [ -f output/${{ env.LOG_FILE }} ]; then
             echo "-- File exists! ${{ env.LOG_FILE }}"
           else
             echo "-- File is not found! ${{ env.LOG_FILE }}"
           fi
 
           echo "2. Validating the output file to have "Hello from Bash!": "
-          if grep -q "Hello from Bash!" ./output/${{ env.LOG_FILE }}; then
+          if grep -q "Hello from Bash!" output/${{ env.LOG_FILE }}; then
             echo "-- Found the expected string in output."
           else
             echo "-- String not found in output."
           fi
 
           echo "3. Validating the output file to have a valid timestamp -- YYYYMMDD_HHMMSS: "
-          if grep -Eq '[0-9]{8}_[0-9]{6}' ./output/${{ env.LOG_FILE }}; then
+          if grep -Eq '[0-9]{8}_[0-9]{6}' output/${{ env.LOG_FILE }}; then
             echo "-- Timestamp is valid in the output file."
           else
             echo "-- Timestamp is not valid in the output file."
