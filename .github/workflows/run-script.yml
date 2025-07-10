@@ -28,9 +28,8 @@ jobs:
           bash scripts/hello.sh
       
       - name: Creating a log file
-        run: echo "Creating a log file"
-        env:
-          PREFERABLE_LOG_FILE_NAME: ${{ inputs.preferable_log_file_name }}
+        run: echo "PREFERABLE_LOG_FILE_NAME=${{ inputs.preferable_log_file_name }}" >> $GITHUB_ENV
+        
 
       - name: Setting up a log file name
         run: |
@@ -40,8 +39,7 @@ jobs:
             LOG_FILE="$PREFERABLE_LOG_FILE_NAME"
             echo "-- Set up! $LOG_FILE"
           fi
-        env:
-          PREFERABLE_LOG_FILE_NAME: ${{ inputs.preferable_log_file_name }}
+       
 
 
       - name: Testing the output for hello.sh
