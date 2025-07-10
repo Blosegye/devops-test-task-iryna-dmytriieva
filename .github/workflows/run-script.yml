@@ -28,6 +28,7 @@ jobs:
           bash scripts/hello.sh
       
       - name: Creating a log file
+        run: echo "Creating a log file"
         env:
           PREFERABLE_LOG_FILE_NAME: ${{ inputs.preferable_log_file_name }}
 
