@@ -1,0 +1,3 @@
+Hello from Bash!
+Current date and time: 20250710_174632
+Number of files:        1

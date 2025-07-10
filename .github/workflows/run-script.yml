@@ -18,12 +18,8 @@ jobs:
         run: |
           chmod +x scripts/hello.sh
           bash scripts/hello.sh
-      - name: Testing the output from ${{ env.LOG_FILE_PATH }}
+      - name: Testing the output from $LOG_FILE
         run: |
           echo "Just test"
+          echo "$LOG_FILE"
 
-      - name: Upload log file
-        uses: actions/upload-artifact@v4
-        with:
-          name: artifact-ci
-          path: logs/

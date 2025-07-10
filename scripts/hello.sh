@@ -17,15 +17,13 @@ count_files () {
 
 output_file="log-${current_date}.txt"
 
-log_file_path(){
-    echo "LOG_FILE_PATH=${output_file}" >> "$GITHUB_ENV"
-}
-
 # Export log path so GitHub Actions can read it later
+log_file_path(){
+    echo "LOG_FILE=${output_file}" >> "$GITHUB_ENV"
+}
 
 # Redirect output to a file including errors
 exec > output/$output_file 2>&1
-
 
 
 greetings
