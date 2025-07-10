@@ -1,0 +1,29 @@
+name: A GitHub Actions Workflow for Task 2
+run-name: ${{ github.actor }} is running a workflow from Task 2 
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  task-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Running hello.sh for Task 2
+        run: |
+          chmod +x scripts/hello.sh
+          bash scripts/hello.sh
+      - name: Testing the output from ${{ env.LOG_FILE_PATH }}
+        run: |
+          echo "Just test"
+
+      - name: Upload log file
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifact-ci
+          path: logs/

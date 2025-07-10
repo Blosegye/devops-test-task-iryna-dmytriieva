@@ -15,8 +15,17 @@ count_files () {
     find . -maxdepth 1 -type f | wc -l 
 }
 
+output_file="log-${current_date}.txt"
+
+log_file_path(){
+    echo "LOG_FILE_PATH=${output_file}" >> "$GITHUB_ENV"
+}
+
+# Export log path so GitHub Actions can read it later
+
 # Redirect output to a file including errors
-exec > output/log-${current_date}.txt 2>&1
+exec > output/$output_file 2>&1
+
 
 
 greetings
