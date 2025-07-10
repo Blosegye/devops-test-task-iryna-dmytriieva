@@ -30,9 +30,24 @@ jobs:
 
           echo "2. Validating the output file to have "Hello from Bash!": "
           if grep -q "Hello from Bash!" ./output/$LOG_FILE; then
-            echo "Found the expected string."
+            echo "-- Found the expected string in output."
           else
-            echo "String not found in the file."
+            echo "-- String not found in output."
+          fi
+
+          echo "3. Validating the output file to have a valid timestamp -- YYYYMMDD_HHMMSS: "
+          if grep -Eq '[0-9]{8}_[0-9]{6}' ./output/$LOG_FILE; then
+            echo "-- Timestamp is valid in the output file."
+          else
+            echo "-- Timestamp is not valid in the output file."
+          fi
+
+          echo "4. Validating the value for file count to be numeric: "
+          if grep -Eq 'Number of files: ^[0-9]+$' ./output/$LOG_FILE; then
+            echo "File count is numeric in the output file."
+          else
+            echo "File count is NOT numeric in the output file!"
+            exit 1
           fi
 
 
