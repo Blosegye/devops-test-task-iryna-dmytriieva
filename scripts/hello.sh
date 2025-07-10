@@ -14,7 +14,7 @@ greetings () {
 
 # Count the number of files in the current directory, excluding subdirectories function
 count_files() {
-    find . -maxdepth 1 -type f | wc -l 
+    find ./output/ -maxdepth 1 -type f | wc -l 
 }
 
 log_count_files(){

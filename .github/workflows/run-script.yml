@@ -1,5 +1,5 @@
-name: A GitHub Actions Workflow for Task 2
-run-name: ${{ github.actor }} is running a workflow from Task 2 
+name: A GitHub Actions Workflow 
+run-name: ${{ github.actor }} is running a workflow
 on: 
   push:
     branches:
