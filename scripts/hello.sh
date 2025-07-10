@@ -14,17 +14,16 @@ greetings () {
 count_files () {
     find . -maxdepth 1 -type f | wc -l 
 }
-
+# Generate and Export log name so GitHub Actions can read it later
 output_file="log-${current_date}.txt"
-
-# Export log path so GitHub Actions can read it later
-log_file_path(){
+log_file(){
     echo "LOG_FILE=${output_file}" >> "$GITHUB_ENV"
 }
 
+log_file
+
 # Redirect output to a file including errors
 exec > output/$output_file 2>&1
-
 
 greetings
 echo "Current date and time: $current_date"
