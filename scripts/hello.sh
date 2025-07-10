@@ -22,7 +22,12 @@ log_count_files(){
 log_count_files
 
 # Generate and Export log name so GitHub Actions can read it later
-output_file="log-${current_date}.txt"
+
+if [[ -n "$1" ]]; then
+    output_file="$1"
+else 
+    output_file="log-${current_date}.txt"
+fi
 
 log_file() {
     echo "LOG_FILE=${output_file}" >> "$GITHUB_ENV"

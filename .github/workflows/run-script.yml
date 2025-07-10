@@ -25,38 +25,27 @@ jobs:
       - name: Running hello.sh for Task 2
         run: |
           chmod +x scripts/hello.sh
-          bash scripts/hello.sh
-
-      
-      - name: Setting up a log file name
-        run: |
-          if [[ "${{ inputs.preferable_log_file_name }}" == '' ]]; then
-            echo "LOG_FILE=$LOG_FILE" >> $GITHUB_ENV
-          else
-            LOG_FILE="${{ inputs.preferable_log_file_name }}"
-            echo "LOG_FILE=$LOG_FILE" >> $GITHUB_ENV
-          fi
-          echo "-- Set up! $LOG_FILE"
+          bash scripts/hello.sh "${{ inputs.preferable_log_file_name }}"
        
 
       - name: Testing the output for hello.sh
         run: |
           echo "1. Validating the output file creation: "
-          if [ -f ./output/$LOG_FILE ]; then
-            echo "-- File exists! $LOG_FILE"
+          if [ -f ./output/${{ env.LOG_FILE }} ]; then
+            echo "-- File exists! ${{ env.LOG_FILE }}"
           else
-            echo "-- File is not found! $LOG_FILE "
+            echo "-- File is not found! ${{ env.LOG_FILE }}"
           fi
 
           echo "2. Validating the output file to have "Hello from Bash!": "
-          if grep -q "Hello from Bash!" ./output/$LOG_FILE; then
+          if grep -q "Hello from Bash!" ./output/${{ env.LOG_FILE }}; then
             echo "-- Found the expected string in output."
           else
             echo "-- String not found in output."
           fi
 
           echo "3. Validating the output file to have a valid timestamp -- YYYYMMDD_HHMMSS: "
-          if grep -Eq '[0-9]{8}_[0-9]{6}' ./output/$LOG_FILE; then
+          if grep -Eq '[0-9]{8}_[0-9]{6}' ./output/${{ env.LOG_FILE }}; then
             echo "-- Timestamp is valid in the output file."
           else
             echo "-- Timestamp is not valid in the output file."
