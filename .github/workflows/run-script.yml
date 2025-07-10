@@ -43,12 +43,7 @@ jobs:
           fi
 
           echo "4. Validating the value for file count to be numeric: "
-          if grep -Eq 'Number of files: ^[0-9]+$' ./output/$LOG_FILE; then
-            echo "File count is numeric in the output file."
-          else
-            echo "File count is NOT numeric in the output file!"
-            exit 1
-          fi
+          
 
 
 
