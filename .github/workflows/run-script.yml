@@ -30,6 +30,8 @@ jobs:
 
       - name: Testing the output for hello.sh
         run: |
+          ls -R
+          pwd
           echo "1. Validating the output file creation: "
           if [ -f output/${{ env.LOG_FILE }} ]; then
             echo "-- File exists! ${{ env.LOG_FILE }}"
