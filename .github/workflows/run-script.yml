@@ -34,7 +34,7 @@ jobs:
 
       - name: Setting up a log file name
         run: |
-          if [[ "$PREFERABLE_LOG_FILE_NAME" = '']]; then
+          if [[ "$PREFERABLE_LOG_FILE_NAME" = '' ]]; then
             echo "-- Set up! $LOG_FILE"
           else
             $LOG_FILE =$PREFERABLE_LOG_FILE_NAME
