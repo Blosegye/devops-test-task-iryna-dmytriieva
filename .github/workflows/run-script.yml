@@ -44,10 +44,18 @@ jobs:
 
           echo "4. Validating the value for file count to be numeric: "
           if [[ "$LOG_FILE_COUNT" =~ ^[0-9]+$ ]]; then
-            echo "File count is numeric."
+            echo "-- File count is numeric."
           else
-            echo "File count is NOT numeric!"
+            echo "-- File count is NOT numeric!"
           fi
+
+
+      - name: Upload log file as a CI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-artifact-log-file
+          path: logs/${{ env.LOG_FILE }}
+      
 
 
 
