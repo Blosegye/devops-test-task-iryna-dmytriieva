@@ -26,21 +26,18 @@ jobs:
         run: |
           chmod +x scripts/hello.sh
           bash scripts/hello.sh
-      
-      - name: Creating a log file
-        run: echo "PREFERABLE_LOG_FILE_NAME=${{ inputs.preferable_log_file_name }}" >> $GITHUB_ENV
-        
 
+      
       - name: Setting up a log file name
         run: |
-          if [[ "$PREFERABLE_LOG_FILE_NAME" = '' ]]; then
-            echo "-- Set up! $LOG_FILE"
+          if [[ "${{ inputs.preferable_log_file_name }}" == '' ]]; then
+            echo "LOG_FILE=$LOG_FILE" >> $GITHUB_ENV
           else
-            LOG_FILE="$PREFERABLE_LOG_FILE_NAME"
-            echo "-- Set up! $LOG_FILE"
+            LOG_FILE="${{ inputs.preferable_log_file_name }}"
+            echo "LOG_FILE=$LOG_FILE" >> $GITHUB_ENV
           fi
+          echo "-- Set up! $LOG_FILE"
        
-
 
       - name: Testing the output for hello.sh
         run: |
@@ -48,7 +45,7 @@ jobs:
           if [ -f ./output/$LOG_FILE ]; then
             echo "-- File exists! $LOG_FILE"
           else
-            echo "-- File is not found! $LOG_FILE"
+            echo "-- File is not found! $LOG_FILE "
           fi
 
           echo "2. Validating the output file to have "Hello from Bash!": "
