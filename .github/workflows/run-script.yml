@@ -46,9 +46,9 @@ jobs:
         run: |
           echo "1. Validating the output file creation: "
           if [ -f ./output/$LOG_FILE ]; then
-            echo "-- File exists!"
+            echo "-- File exists! $LOG_FILE"
           else
-            echo "-- File is not found!"
+            echo "-- File is not found! $LOG_FILE"
           fi
 
           echo "2. Validating the output file to have "Hello from Bash!": "
