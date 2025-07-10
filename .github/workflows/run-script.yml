@@ -37,7 +37,7 @@ jobs:
           if [[ "$PREFERABLE_LOG_FILE_NAME" = '' ]]; then
             echo "-- Set up! $LOG_FILE"
           else
-            $LOG_FILE =$PREFERABLE_LOG_FILE_NAME
+            LOG_FILE="$PREFERABLE_LOG_FILE_NAME"
             echo "-- Set up! $LOG_FILE
           fi
 
