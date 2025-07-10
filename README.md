@@ -1,13 +1,14 @@
 # devops-test-task-iryna-dmytriieva
 
-A bash script to print greetings from Bash!, a current timestamp and to provide anumber of files in ./output folder.
+A bash script to print greetings from Bash, a current timestamp and to provide anumber of files in ./output folder.
 All this info is passed for validation, processed and put into the output file including default or custom filename.
+
 -------------
 In order to run the script locally, please follow the steps:
 1. Open Bash terminal
 2. Run the following command
- --- bash {/path/to/repository}/scripts/hello.sh 
-3. Observe the results of logging within the /output folder and the /logs/history.txt file
+    --- bash {/path/to/repository}/scripts/hello.sh 
+4. Observe the results of logging within the /output folder and the /logs/history.txt file
 
 In order to trigger the GitHub Actions workflow manually.
 1. Open GitHub UI with this repository
