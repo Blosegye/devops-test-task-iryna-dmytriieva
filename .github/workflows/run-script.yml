@@ -18,8 +18,22 @@ jobs:
         run: |
           chmod +x scripts/hello.sh
           bash scripts/hello.sh
-      - name: Testing the output from $LOG_FILE
+
+      - name: Testing the output for hello.sh
         run: |
-          echo "Just test"
-          echo "$LOG_FILE"
+          echo "1. Validating the output file creation: "
+          if [ -f ./output/$LOG_FILE ]; then
+            echo "-- File exists!"
+          else
+            echo "-- File is not found!"
+          fi
+
+          echo "2. Validating the output file to have "Hello from Bash!": "
+          if grep -q "Hello from Bash!" ./output/$LOG_FILE; then
+            echo "Found the expected string."
+          else
+            echo "String not found in the file."
+          fi
+
+
 
